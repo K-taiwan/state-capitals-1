@@ -1,3 +1,6 @@
+import random
+
+
 # an array of state dictionaries
 states = [
 {
@@ -18,7 +21,7 @@ states = [
 }, {
     "name": "Colorado",
     "capital": "Denver"
-}, {
+},{
     "name": "Connecticut",
     "capital": "Hartford"
 }, {
@@ -151,3 +154,56 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+# print(states)
+
+
+#  - Make sure the states don't appear in alphabetical order in the prompts. This will make the game a bit more challenging for the user.
+
+#  - Provide a welcome message to introduce the player to the game.
+overview = "This game is simple, we just need to match the right states with the right capital's. Or you can type 'exit' to end the game"
+print(overview)
+playName = input('Please enter your name: ')
+print('Welcome player:', playName)
+#  - Initialize new keys in the dictionaries that store the number of times a user gets a capital `correct` and the number of times the answer is `wrong`.
+correct = 0
+wrong = 0
+score = 0
+# print(correct)
+# print(wrong)
+
+random.shuffle(states)
+# print(states)
+
+# print(states[49])
+# print('What is the capital of %s'%states[49]['name'])
+
+for i in range(len(states)-1):
+    playerAnswer = input('What is the capital of %s: '%states[i]['name'])
+    if playerAnswer == 'exit':
+        break
+    elif playerAnswer.lower() == states[i]['capital'].lower():
+        correct += 1
+        score += 1
+        print('Correct, Your score is %d' %score)
+    else:
+        score -= 1
+        wrong += 1
+        print('Incorrect, the capital of %s is %s.' %(states[i]['name'],states[i]['capital']))
+        print('Your score is %d'%score)
+        print('Total Correct: %d'%correct)
+        print('Total Wrong: %d'%wrong)
+
+
+
+
+
+
+
+
+#  - Through all 50 states, prompt the user to name the capital of the state.
+#   - If the answer is correct, display a message saying so, and increment the `correct` key.
+#   - If the answer is wrong, display a message saying so, and increment the `wrong` key.
+#   - After each prompt, display a message telling the reader how many times the state was answered correctly out of the total number of times answered.
+
+# - Once the user has gone through all 50 states, ask them if they'd like to play again.
